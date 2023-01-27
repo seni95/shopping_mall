@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from '../components/UI/Button';
 
 export default function NewProduct() {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({});
   const [file,setFile]=useState();
   const handleChange=(e)=>{
     const {name,value,files} =  e.target;
@@ -13,10 +13,17 @@ export default function NewProduct() {
     setProduct((product)=>({...product,[name]:value}));
 
   };
-  const handleSubmit=(e)=>{};
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+
+
+  };
   return (
     <section>
       <form>
+        {file && 
+        <img src={URL.createObjectURL(file)} alt='local file'></img>
+        }
       <input type="file" accept='image/*' name="file" required onChange={handleChange}></input>
       <input type="text" name="title" value={product.title ?? ''} placeholder="제품명" required onChange={handleChange}></input>
       <input type="number" name="price" value={product.price?? ''} placeholder="가격" required onChange={handleChange}></input>
