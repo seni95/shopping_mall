@@ -1,31 +1,21 @@
-import React from 'react'
+import React, { createRef, useCallback, useEffect, useRef, useState } from 'react'
+import Introduction from '../components/Introduction'
 import MainProduct from '../components/mainProduct'
+import Products from '../components/Products'
+import Banner from '../components/UI/Banner'
+// import {useScrollFadeIn} from '../components/hooks/useScrollFadeIn'
 
 export default function Home() {
+
+
   return (
-    <>
-    <div className='bg-fixed bg-cover w-screen h-screen bg-[url("https://images.unsplash.com/photo-1589363460779-cd717d2ed8fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80")]'></div>
+    <div>
+    <Banner></Banner>
     {/* <MainProduct></MainProduct> */}
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    <div>?????</div>
-    </>
+   <Products count={4}></Products>
+ 
+   <Introduction></Introduction>
+   <MainProduct></MainProduct>
+    </div>
   )
 }

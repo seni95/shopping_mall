@@ -6,17 +6,21 @@ import User from './User';
 import Button from './UI/Button';
 import { useAuthContext } from '../pages/context/AuthContext';
 
-export default function Navbar() {
+function reload() {
+  (window.location || document.location).reload();
+}
 
+export default function Navbar() {
+    const [isLogin, setIsLogin] = useState(false);
     const {user,login,logout} = useAuthContext();
-    console.log(user);
+    console.log(logout);
     console.log("dnfwlK");
    
   return (
-    <header className='flex flex-col items-center justify-between py-10 px-2 gap-y-5'>
+    <header className='absolute z-[500] bg-black inset-x-0 flex flex-col items-center justify-between py-10 px-2 gap-y-5'>
         <Link to="/" className='flex items-center text-4xl
         '>
-            <h1>ZARA</h1>
+            <h1>MALL</h1>
         </Link>
         <nav className='flex items-center gap-4 font-semibold'>
             <Link to="/products">products</Link>
@@ -27,7 +31,7 @@ export default function Navbar() {
             </Link>}
             {user && <User user={user}></User>}
             {!user && <Button text={'LogIn'} onClick={login}>Login</Button>} 
-            {user && <Button text={'LogOut'} onClick={logout}>Logout</Button>} 
+            {user && <Button text={'LogOut'} onClick={()=>{logout(); reload()}}>Logout</Button>} 
         </nav>
     </header>
   )

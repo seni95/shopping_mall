@@ -2,8 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider,signOut,
 onAuthStateChanged } from "firebase/auth";
-import { get, getDatabase,ref } from "firebase/database";
-
+import { get, getDatabase,ref,set } from "firebase/database";
+import {v4 as uuid } from 'uuid';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -78,5 +78,27 @@ const database = getDatabase(app);
       }
 
       return user;
+    })
+  }
+
+  export async function addNewProduct(product,imageURL){
+    const id=uuid();
+    return set(ref(database,`products/${id}`),{
+      ...product,
+      id,
+      price:parseInt(product.price),
+      image:imageURL,
+      options:product.option.split(',')
+    })
+  }
+
+
+  export async function getProducts(){
+    return get(ref(database,'products')).then(snapshot=>{
+      if(snapshot.exists()){
+        return Object.values(snapshot.val());
+      }
+
+      return [];
     })
   }

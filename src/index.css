@@ -16,6 +16,7 @@ body {
   background-color: black;
   color:white;
   /* text-align: center; */
+  /* @apply brightness-50 */
 }
 
 #root{
@@ -27,5 +28,13 @@ code {
 }
 
 img{
-  
+  object-fit: cover;
+}
+
+input[type=text],input[type=number]{
+  color:black;
+}
+
+input{
+  @apply p-4 outline-none border border-gray-300 my-1;
 }
