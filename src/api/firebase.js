@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider,signOut,
 onAuthStateChanged } from "firebase/auth";
-import { get, getDatabase,ref,set,orderByChild,orderByKey,orderByValue, query } from "firebase/database";
+import { get, getDatabase,ref,set,orderByChild,orderByKey,orderByValue, query, limitToLast, limitToFirst } from "firebase/database";
 import {v4 as uuid } from 'uuid';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -96,12 +96,15 @@ const database = getDatabase(app);
 
 
   export async function getProducts(){
-    return get(query(ref(database,'products'), orderByChild('uploadingDate'))).then(snapshot=>{
+    return get(query(ref(database,'products'), orderByChild('uploadingDate'),limitToFirst(100))).then(snapshot=>{
       if(snapshot.exists()){
-        const result=[];
-        snapshot.forEach(item=>result.push(item.val()));
-        console.log(result);
-        return Object.values(snapshot.val());
+        var result=[];
+        
+        snapshot.forEach((item)=>{
+          const arrangedData = item.val();
+          result.push(arrangedData);
+        });
+        return Object.values(result.reverse());
       }
 
       return [];
