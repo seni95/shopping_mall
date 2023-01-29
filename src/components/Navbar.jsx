@@ -17,7 +17,7 @@ export default function Navbar() {
     console.log("dnfwlK");
    
   return (
-    <header className='absolute z-[500] bg-black inset-x-0 flex flex-col items-center justify-between py-10 px-2 gap-y-5'>
+    <header className='absolute z-[500] h-[250px] bg-black inset-x-0 px-10 flex items-center justify-between py-20 px-2 gap-y-5'>
         <Link to="/" className='flex items-center text-4xl
         '>
             <h1>MALL</h1>

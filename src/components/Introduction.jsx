@@ -5,10 +5,10 @@ export default function Introduction() {
  const picAni = useScrollFadeIn('down',1,0);
  const useText = useScrollFadeIn('up',1,0);
     return (
-    <div className='flex'>
+    <div className='flex my-20'>
         <img
+        className='ml-20 w-1/2 rounded-full'
         {...picAni}
-        className='' 
         src="https://images.unsplash.com/photo-1577909687863-91bb3ec12db5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80" alt="" />        
         <div className='flex flex-col justify-center mx-20'
         {...useText}

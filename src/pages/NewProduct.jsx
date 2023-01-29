@@ -33,7 +33,7 @@ export default function NewProduct() {
     .finally(()=>setIsUploading(false));
   };
   return (
-    <section className='w-full text-center '>
+    <section className='w-full text-center pt-[250px]'>
       <h2 className='text-2xl font-bold my-4 font-mono'>새로운 제품 등록</h2>
       {success && <p className='my-2'>{success}</p>}
       <form className='flex flex-col px-12'>
