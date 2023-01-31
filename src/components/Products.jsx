@@ -3,11 +3,11 @@ import React from 'react'
 import { getProducts } from '../api/firebase'
 import ProductCard from './ProductCard'
 
-export default function Products({count}) {
-    const {isLoading,error,data:products} = useQuery(['products'],getProducts)
+export default function Products({count,title,kind}) {
+    const {isLoading,error,data:products} = useQuery(['products'],()=>getProducts(kind))
   return (
     <>
-    <h2 className='text-2xl text-center text-mono mt-5'>Freshly Released</h2>
+    <h2 className='text-2xl text-center text-mono mt-5'>{title}</h2>
     {isLoading && <p>Loading...</p>}
     {error && <p>{error}</p>}
     <ul className='grid grid-cols-1 md:grid-cols-4 gap-4 p-4'>

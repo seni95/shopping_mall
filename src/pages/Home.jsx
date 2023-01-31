@@ -12,7 +12,8 @@ export default function Home() {
     <div>
     <Banner></Banner>
     {/* <MainProduct></MainProduct> */}
-   <Products count={4}></Products>
+    <div></div>
+   <Products count={4} title={"Freshly Released"} kind={"All"}></Products>
  
    <Introduction></Introduction>
    <MainProduct></MainProduct>

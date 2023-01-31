@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider,signOut,
 onAuthStateChanged } from "firebase/auth";
-import { get, getDatabase,ref,set,orderByChild,orderByKey,orderByValue, query, limitToLast, limitToFirst } from "firebase/database";
+import { get, getDatabase,ref,set,orderByChild,orderByKey,orderByValue, query, limitToLast, limitToFirst, equalTo } from "firebase/database";
 import {v4 as uuid } from 'uuid';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -95,16 +95,18 @@ const database = getDatabase(app);
   }
 
 
-  export async function getProducts(){
-    return get(query(ref(database,'products'), orderByChild('uploadingDate'),limitToFirst(100))).then(snapshot=>{
+  export async function getProducts(kind){
+    return get(query(ref(database,'products'), orderByChild('uploadingDate'))).then(snapshot=>{
       if(snapshot.exists()){
         var result=[];
         
         snapshot.forEach((item)=>{
-          const arrangedData = item.val();
-          result.push(arrangedData);
+          if(item.val().category===kind || kind==="All"){
+            const arrangedData = item.val();
+            result.push(arrangedData);
+          }
         });
-        return Object.values(result.reverse());
+        return Object.values(result.reverse()); //reverse한 이유는 갓 등록한 최신item 순으로 받아오려고! (최신일수록 숫자가 크니까)
       }
 
       return [];

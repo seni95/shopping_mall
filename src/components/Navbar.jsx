@@ -23,7 +23,9 @@ export default function Navbar() {
             <h1>MALL</h1>
         </Link>
         <nav className='flex items-center gap-4 font-semibold'>
-            <Link to="/products">products</Link>
+            <Link to="/products">Top</Link>
+            <Link to="/products">Bottom</Link>
+            <Link to="/products">Shoes</Link>
             {user && <Link to="/carts">carts</Link>}
             {user && user.isAdmin &&
             <Link to="/products/new" className='text-2xl'>

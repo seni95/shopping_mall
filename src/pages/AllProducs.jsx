@@ -2,5 +2,9 @@ import React from "react";
 import Products from "../components/Products";
 
 export default function AllProducts(){
-    return <div><Products></Products></div>
+    return (
+        <div className="pt-[250px]">
+        <Products count={"full"} title={"Top"} kind={"top"}></Products>    
+        </div>
+    );
 }
