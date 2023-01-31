@@ -34,7 +34,7 @@ img{
   object-fit: cover;
 }
 
-input[type=text],input[type=number]{
+input[type=text],input[type=number],select,option{
   color:black;
 }
 

@@ -11,6 +11,9 @@ import ProductDetail from './pages/ProductDetail';
 import MyCart from './pages/MyCart';
 import Home from './pages/Home';
 import ProtectedRoute from './pages/ProtectedRoute';
+import Top from './pages/products/Top';
+import Bottom from './pages/products/Bottom';
+import Shoes from './pages/products/Shoes';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +22,9 @@ const router = createBrowserRouter([
     errorElement:<NotFound></NotFound>,
     children:[
       {index:true,path:'/',element:<Home></Home>},
-      {path:'/products', element:<AllProducts></AllProducts>},
+      {path:'/Tops', element:<Top></Top>},
+      {path:'/Bottoms', element:<Bottom></Bottom>},
+      {path:'/Shoes', element:<Shoes></Shoes>},
       {path:'/products/new',element: 
       // <ProtectedRoute requireAdmin>
       <NewProduct></NewProduct>
