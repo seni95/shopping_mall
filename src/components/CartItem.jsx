@@ -1,25 +1,40 @@
 import React from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 import {SlMinus, SlPlus} from 'react-icons/sl'
-import { addOrUpdateToCart } from '../api/firebase';
+import { addOrUpdateToCart, removeFromCart } from '../api/firebase';
 
-export default function CartItem({product,product:{id,image,title,option,quantity}}) {
+const ICON_CLASS = 'transition-all cursor-pointer hover:text-brand hover:scale-105 mx-1'
+
+export default function CartItem({product,product:{id,image,title,option,quantity,price},uid}) {
     const handleMinus=()=>{
         if(quantity<2) return;
-        addOrUpdateToCart();
+        addOrUpdateToCart(uid,{...product,quantity:quantity-1});
     };
-    const handlePlus=()=>{};
-    const handleDelete=()=>{};
+    const handlePlus=()=>{
+        addOrUpdateToCart(uid,{...product,quantity:quantity+1});
+
+    };
+    const handleDelete=()=>{
+        removeFromCart(uid,id);
+    };
   return (
-    <li>
-        <img src={image} alt={title} />
-        <div>
-            <p>{title}</p>
-            <p>{option}</p>
-            <SlPlus onClick={handleMinus}></SlPlus>
+    <li className='flex justify-between my-2 items-center'>
+        <img 
+        className='w-24 md:w-48 rounded-lg'
+        src={image} alt={title} />
+        <div className='ml-4 flex-1 flex justify-between'>
+          <div className='basis-3/5'>
+          <p className='text-lg'>{title}</p>
+            <p className='text-xl font-bold text-brand'>{option}</p>
+            <p>￦{price}</p>
+          </div>
+          <div className='text-2xl flex items-center'>
+          <SlPlus className={ICON_CLASS} onClick={handleMinus}></SlPlus>
             <span>{quantity}</span>
-            <SlMinus onClick={handlePlus}></SlMinus>
-            <BsFillTrashFill onClick={handleDelete}></BsFillTrashFill>
+            <SlMinus className={ICON_CLASS} onClick={handlePlus}></SlMinus>
+            <BsFillTrashFill className={ICON_CLASS} onClick={handleDelete}></BsFillTrashFill>
+          </div>
+            
         </div>
     </li>
   )
