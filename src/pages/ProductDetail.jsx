@@ -18,19 +18,32 @@ export default function ProductDetail() {
 
     }
     return (<section className='pt-[250px]'>
-        <p>{category}</p>
-        <img src={image} alt={title} />
-        <div>
-            <h2>{title}</h2>
-            <p>￦{price}</p>
-            <p>{description}</p>
-            <p>Option:</p>
-            <select
+        <p className='mx-12 mt-4 text-gray-700'>{category}</p>
+        <section
+        className='flex flex-col justify-center md:flex-row p-4'
+        >
+        <img 
+        className='px-4 basis-5/12'
+        src={image} alt={title} />
+        <div className='w-full basis-5/12 flex flex-col p-4'>
+            <h2
+            className='text-3xl font-bold py-2 border-b border-gray-400'
+            >{title}</h2>
+            <p className='text-2xl font-bold py-2'>￦{price}</p>
+            <p className='py-4 text-lg '>{description}</p>
+            <div className='flex items-center'>
+            <label htmlFor='select'
+            className='text-brand font-bold'
+            >Option:</label>
+            <select id="select"
+            className='p-2 m-4 border-2 border-dashed border-brand outline-none bg-black text-white'
             value={selected}
             name="" id="" onChange={handleSelect}>
                 {option && option.map((option,index)=><option key={index}>{option}</option>)}
             </select>
+            </div>
         <Button text="장바구니에 추가" onClick={handleClick}></Button>
         </div>
+        </section>
     </section>);
 }
