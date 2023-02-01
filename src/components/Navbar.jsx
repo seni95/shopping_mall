@@ -5,6 +5,8 @@ import {BsFillPencilFill} from 'react-icons/bs';
 import User from './User';
 import Button from './UI/Button';
 import { useAuthContext } from '../pages/context/AuthContext';
+import {FaShoppingCart} from 'react-icons/fa'
+import CartStatus from './UI/CartStatus';
 
 function reload() {
   (window.location || document.location).reload();
@@ -26,7 +28,8 @@ export default function Navbar() {
             <Link to="/Tops">Top</Link>
             <Link to="/Bottoms">Bottom</Link>
             <Link to="/Shoes">Shoes</Link>
-            {user && <Link to="/carts">carts</Link>}
+            {user && <Link to="/carts">
+              <CartStatus></CartStatus></Link>}
             {user && user.isAdmin &&
             <Link to="/products/new" className='text-2xl'>
             <BsFillPencilFill></BsFillPencilFill>
