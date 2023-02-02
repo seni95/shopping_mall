@@ -29,14 +29,14 @@ export default function MyCart() {
       <ul className='border-b border-gray-300 mb-8 p-4 px-8'>
       {products && products.map((product)=><CartItem uid={uid} key={product.id} product={product}></CartItem>)}  
       </ul>}
-      <div className='flex justify-between items-center mb-8 px-2 md:px-8 lg:px-16'>
+      <div className='bg-gray-100 rounded-lg flex justify-between items-center mb-8 px-2 md:px-8 lg:px-16'>
       <PriceCard text="상품 총액" price={totalPrice}></PriceCard>
-      <GoPlus></GoPlus>
+      <GoPlus className='text-black text-5xl'></GoPlus>
       <PriceCard text="배송액" price={SHIPPING}></PriceCard>
-      <FaEquals></FaEquals>
+      <FaEquals className='text-black text-5xl'></FaEquals>
       <PriceCard text="총가격" price={totalPrice+SHIPPING}></PriceCard>
       </div>
-      <Button text="주문하기"></Button>    
+      <button className=''>주문하기</button>    
     </section>
   )
 }

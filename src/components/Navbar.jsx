@@ -35,8 +35,8 @@ export default function Navbar() {
             <BsFillPencilFill></BsFillPencilFill>
             </Link>}
             {user && <User user={user}></User>}
-            {!user && <Button text={'LogIn'} onClick={login}>Login</Button>} 
-            {user && <Button text={'LogOut'} onClick={()=>{logout(); reload()}}>Logout</Button>} 
+            {!user && <button text={'LogIn'} onClick={login}>Login</button>} 
+            {user && <button text={'LogOut'} onClick={()=>{logout(); reload()}}>Logout</button>} 
         </nav>
     </header>
   )
