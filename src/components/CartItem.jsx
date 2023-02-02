@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 import {SlMinus, SlPlus} from 'react-icons/sl'
 import { addOrUpdateToCart, removeFromCart } from '../api/firebase';
@@ -6,12 +6,17 @@ import { addOrUpdateToCart, removeFromCart } from '../api/firebase';
 const ICON_CLASS = 'transition-all cursor-pointer hover:text-brand hover:scale-105 mx-1'
 
 export default function CartItem({product,product:{id,image,title,option,quantity,price},uid}) {
+    
+    const [volume, setVolume] = useState(quantity);
+  
     const handleMinus=()=>{
         if(quantity<2) return;
         addOrUpdateToCart(uid,{...product,quantity:quantity-1});
+        setVolume(quantity-1);
     };
     const handlePlus=()=>{
         addOrUpdateToCart(uid,{...product,quantity:quantity+1});
+        setVolume(quantity+1);
 
     };
     const handleDelete=()=>{
@@ -29,9 +34,9 @@ export default function CartItem({product,product:{id,image,title,option,quantit
             <p>￦{price}</p>
           </div>
           <div className='text-2xl flex items-center'>
-          <SlPlus className={ICON_CLASS} onClick={handleMinus}></SlPlus>
-            <span>{quantity}</span>
-            <SlMinus className={ICON_CLASS} onClick={handlePlus}></SlMinus>
+          <SlPlus className={ICON_CLASS} onClick={handlePlus}></SlPlus>
+            <span>{volume}</span>
+            <SlMinus className={ICON_CLASS} onClick={handleMinus}></SlMinus>
             <BsFillTrashFill className={ICON_CLASS} onClick={handleDelete}></BsFillTrashFill>
           </div>
             

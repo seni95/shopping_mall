@@ -22,7 +22,7 @@ export default function Navbar() {
     <header className='absolute z-[500] h-[250px] bg-black inset-x-0 px-10 flex items-center justify-between py-20 px-2 gap-y-5'>
         <Link to="/" className='flex items-center text-4xl
         '>
-            <h1>MALL</h1>
+            <h1>ELAND</h1>
         </Link>
         <nav className='flex items-center gap-4 font-semibold'>
             <Link to="/Tops">Top</Link>

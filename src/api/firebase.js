@@ -84,8 +84,6 @@ const database = getDatabase(app);
   export async function addNewProduct(product,imageURL){
     const id=uuid();
     const date = new Date().getTime();
-    console.log(product);
-    console.log(product.option);
     return set(ref(database,`products/${id}`),{
       ...product,
       id,

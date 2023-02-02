@@ -10,7 +10,7 @@ export default function NewProduct() {
   const [isUploading,setIsUploading] = useState(false);
   const [success,setSuccess] = useState();
   const queryClient = useQueryClient();
-  const addProduct = useMutation((product,url)=>{addNewProduct(product,url)},
+  const addProduct = useMutation(({product,url})=>{addNewProduct(product,url)},
   {onSuccess:()=> queryClient.invalidateQueries(['products'])}
   );
 

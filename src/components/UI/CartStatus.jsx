@@ -7,7 +7,7 @@ import { useAuthContext } from '../../pages/context/AuthContext';
 
 export default function CartStatus() {
     const {user:{uid}} = useAuthContext();
-    const {data:products} = useQuery(['carts'],()=>getCart(uid));
+    const {data:products} = useQuery(['carts'],()=>getCart(uid),{keepPreviousData:false});
   return (
     <div className='relative'>
 <FaShoppingCart className='text-4xl'></FaShoppingCart>
