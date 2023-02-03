@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 import {SlMinus, SlPlus} from 'react-icons/sl'
-import { addOrUpdateToCart, removeFromCart } from '../api/firebase';
+import useCarts from './hooks/useCarts';
 
 const ICON_CLASS = 'transition-all cursor-pointer hover:text-brand hover:scale-105 mx-1'
 
-export default function CartItem({product,product:{id,image,title,option,quantity,price},uid}) {
+export default function CartItem({product,product:{id,image,title,option,quantity,price}}) {
     
-    const [volume, setVolume] = useState(quantity);
-  
+    const {addOrUpdateItem,removeItem}= useCarts();
     const handleMinus=()=>{
         if(quantity<2) return;
-        addOrUpdateToCart(uid,{...product,quantity:quantity-1});
-        setVolume(quantity-1);
-    };
+      addOrUpdateItem.mutate({...product,quantity:quantity-1});
+      };
     const handlePlus=()=>{
-        addOrUpdateToCart(uid,{...product,quantity:quantity+1});
-        setVolume(quantity+1);
+      addOrUpdateItem.mutate({...product,quantity:quantity+1});
 
     };
     const handleDelete=()=>{
-        removeFromCart(uid,id);
+      removeItem.mutate(id);
     };
   return (
     <li className='flex justify-between my-2 items-center'>
@@ -35,7 +32,7 @@ export default function CartItem({product,product:{id,image,title,option,quantit
           </div>
           <div className='text-2xl flex items-center'>
           <SlPlus className={ICON_CLASS} onClick={handlePlus}></SlPlus>
-            <span>{volume}</span>
+            <span>{quantity}</span>
             <SlMinus className={ICON_CLASS} onClick={handleMinus}></SlMinus>
             <BsFillTrashFill className={ICON_CLASS} onClick={handleDelete}></BsFillTrashFill>
           </div>

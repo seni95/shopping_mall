@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Navigate, useLocation } from 'react-router-dom';
-import { addOrUpdateToCart } from '../api/firebase';
+import { useLocation } from 'react-router-dom';
+import useCarts from '../components/hooks/useCarts';
 import Button from '../components/UI/Button';
-import { useAuthContext } from './context/AuthContext'
 
 export default function ProductDetail() {
-    const {user :{uid}} = useAuthContext();
+    const {addOrUpdateItem} = useCarts();
     const {
         state:{
             product:{id,image,title,description,category,price,option}
@@ -13,12 +12,19 @@ export default function ProductDetail() {
     }= useLocation();
     const [selected, setSelected] = useState(option && option[0]);
 
+    const [success , setSuccess] = useState();
+
     const handleSelect = e=>{
         setSelected(e.target.value);
     }
     const handleClick = e=>{
         const product = {id,image,title,price,option:selected,quantity:1};
-        addOrUpdateToCart(uid,product);
+        addOrUpdateItem.mutate(product,{
+            onSuccess:()=>{
+                setSuccess('장바구니에 추가되었습니다.');
+                setTimeout(()=>setSuccess(null),3000);
+            }
+        });
     }
     return (<section className='pt-[250px]'>
         <p className='mx-12 mt-4 text-gray-700'>{category}</p>
@@ -41,10 +47,11 @@ export default function ProductDetail() {
             <select id="select"
             className='p-2 m-4 border-2 border-dashed border-brand outline-none bg-black text-white'
             value={selected}
-            name="" id="" onChange={handleSelect}>
+            name="" onChange={handleSelect}>
                 {option && option.map((option,index)=><option key={index}>{option}</option>)}
             </select>
             </div>
+            {success && <p className='my-4 text-center'>{success}</p>}
         <Button text="장바구니에 추가" onClick={handleClick}></Button>
         </div>
         </section>

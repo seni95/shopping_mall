@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import {FiLogOut, FiShoppingBag} from 'react-icons/fi';
 import {BsFillPencilFill} from 'react-icons/bs';
 import User from './User';
-import Button from './UI/Button';
 import { useAuthContext } from '../pages/context/AuthContext';
-import {FaShoppingCart} from 'react-icons/fa'
 import CartStatus from './UI/CartStatus';
 
 function reload() {
@@ -17,6 +14,8 @@ export default function Navbar() {
     const {user,login,logout} = useAuthContext();
     console.log(logout);
     console.log("dnfwlK");
+
+   
    
   return (
     <header className='absolute z-[500] h-[250px] bg-black inset-x-0 px-10 flex items-center justify-between py-20 px-2 gap-y-5'>
