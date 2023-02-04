@@ -5,7 +5,7 @@ export default function Introduction() {
  const picAni = useScrollFadeIn('down',1,0);
  const useText = useScrollFadeIn('up',1,0);
     return (
-    <div className='flex my-20'>
+    <div className='flex my-20 max-sm:hidden'>
         <img
         className='ml-20 w-1/2 rounded-full'
         {...picAni}

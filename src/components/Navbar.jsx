@@ -10,7 +10,6 @@ function reload() {
 }
 
 export default function Navbar() {
-    const [isLogin, setIsLogin] = useState(false);
     const {user,login,logout} = useAuthContext();
     console.log(logout);
     console.log("dnfwlK");
@@ -18,10 +17,12 @@ export default function Navbar() {
    
    
   return (
-    <header className='absolute z-[500] h-[250px] bg-black inset-x-0 px-10 flex items-center justify-between py-20 px-2 gap-y-5'>
+    <header 
+    className='max-sm:flex-col absolute z-[500] h-[250px] bg-black inset-x-0 px-10 flex 
+    items-center justify-between py-20 px-2 gap-y-5'>
         <Link to="/" className='flex items-center text-4xl
         '>
-            <h1>ELAND</h1>
+            <h1>MALL</h1>
         </Link>
         <nav className='flex items-center gap-4 font-semibold'>
             <Link to="/Tops">Top</Link>
