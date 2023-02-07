@@ -5,7 +5,7 @@ import { useAuthContext } from '../../pages/context/AuthContext'
 
 export default function useCarts() {
  
-const {user:{uid}} = useAuthContext();
+const {uid} = useAuthContext();
 const queryClient = useQueryClient();
 const cartQuery = useQuery(['carts',uid||''],()=>getCart(uid),{
     enabled:!!uid,

@@ -5,14 +5,15 @@ const AuthContext = createContext();
 
 export function AuthContextProvider({children}){
     const [user,setUser] = useState();
-
     useEffect((user)=>{
         onUserStateChange((user)=>{
             setUser(user)
         })
     },[])
 
-    return <AuthContext.Provider value={{user,login:login,logout:logout}}>
+    console.log(user);
+    console.log("시발")
+    return <AuthContext.Provider value={{user,login,logout,uid:user?user.uid:''}}>
         {children}
     </AuthContext.Provider>
 }

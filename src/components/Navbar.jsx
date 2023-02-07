@@ -5,10 +5,6 @@ import User from './User';
 import { useAuthContext } from '../pages/context/AuthContext';
 import CartStatus from './UI/CartStatus';
 
-function reload() {
-  (window.location || document.location).reload();
-}
-
 export default function Navbar() {
     const {user,login,logout} = useAuthContext();
     console.log(logout);
@@ -36,7 +32,7 @@ export default function Navbar() {
             </Link>}
             {user && <User user={user}></User>}
             {!user && <button text={'LogIn'} onClick={login}>Login</button>} 
-            {user && <button text={'LogOut'} onClick={()=>{logout(); reload()}}>Logout</button>} 
+            {user && <button text={'LogOut'} onClick={logout}>Logout</button>} 
         </nav>
     </header>
   )

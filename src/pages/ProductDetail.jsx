@@ -4,7 +4,7 @@ import useCarts from '../components/hooks/useCarts';
 import Button from '../components/UI/Button';
 
 export default function ProductDetail() {
-    const {addOrUpdateItem} = useCarts();
+    const {addOrUpdateItem,uid} = useCarts();
     const {
         state:{
             product:{id,image,title,description,category,price,option}
@@ -52,7 +52,7 @@ export default function ProductDetail() {
             </select>
             </div>
             {success && <p className='my-4 text-center'>{success}</p>}
-        <Button text="장바구니에 추가" onClick={handleClick}></Button>
+       {uid && <Button text="장바구니에 추가" onClick={handleClick}></Button>}
         </div>
         </section>
     </section>);
