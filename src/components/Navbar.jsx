@@ -7,8 +7,6 @@ import CartStatus from './UI/CartStatus';
 
 export default function Navbar() {
     const {user,login,logout} = useAuthContext();
-    console.log(logout);
-    console.log("dnfwlK");
 
    
    

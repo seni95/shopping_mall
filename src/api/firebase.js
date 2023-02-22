@@ -59,7 +59,6 @@ const database = getDatabase(app);
     onAuthStateChanged(auth, async (user) => {
         if (user) {
           const updatedUser = await adminUser(user);
-          console.log(user);
           callback(updatedUser)
         } else {
           // User is signed out

@@ -11,8 +11,6 @@ export function AuthContextProvider({children}){
         })
     },[])
 
-    console.log(user);
-    console.log("시발")
     return <AuthContext.Provider value={{user,login,logout,uid:user?user.uid:''}}>
         {children}
     </AuthContext.Provider>

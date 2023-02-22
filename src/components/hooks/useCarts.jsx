@@ -23,6 +23,6 @@ const removeItem = useMutation((id)=>removeFromCart(uid,id),{
     }
 });
 
-return {cartQuery,addOrUpdateItem,removeItem};
+return {cartQuery,addOrUpdateItem,removeItem,uid};
 
 }
