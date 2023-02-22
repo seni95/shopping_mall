@@ -51,7 +51,7 @@ const database = getDatabase(app);
   }
 
   export async function logout(){
-    return signOut(auth).then(()=>null);
+    return signOut(auth).then(()=>null).finally(window.location.reload());
   
   }
 
