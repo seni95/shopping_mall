@@ -48,7 +48,7 @@ export default function ProductDetail() {
             className='p-2 m-4 border-2 border-dashed border-brand outline-none bg-black text-white'
             value={selected}
             name="" onChange={handleSelect}>
-                {option && option.map((option,index)=><option key={index}>{option}</option>)}
+                {option && option.map((option,index)=><option className='text-white' key={index}>{option}</option>)}
             </select>
             </div>
             {success && <p className='my-4 text-center'>{success}</p>}
